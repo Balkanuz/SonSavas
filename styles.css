@@ -1,0 +1,61 @@
+/* styles.css */
+body {
+  background-color: black;
+  color: white;
+  text-align: center;
+  font-family: Arial, sans-serif;
+}
+
+#oyun {
+  width: 800px;
+  height: 600px;
+  background-color: black;
+  margin: 0 auto;
+  border: 1px solid white;
+  position: relative;
+}
+
+.gemi1, .gemi2, .lazer {
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  background-size: cover;
+}
+
+.gemi1 {
+  background-image: url('gemi1.png');
+}
+
+.gemi2 {
+  background-image: url('gemi2.png');
+}
+
+#skor-tablo {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  color: white;
+  text-align: left;
+}
+
+.lazer {
+  width: 5px;
+  height: 20px;
+  background-color: red;
+}
+
+#canlar {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+}
+
+.can {
+  width: 30px;
+  height: 30px;
+  margin-right: 5px;
+}
+
+.kapali {
+  opacity: 0.2;
+}
