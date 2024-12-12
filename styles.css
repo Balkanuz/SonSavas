@@ -59,3 +59,22 @@ body {
 .kapali {
   opacity: 0.2;
 }
+
+#dokunmatik-yon-tuslari {
+  position: absolute;
+  bottom: 50px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 10px;
+}
+
+#dokunmatik-yon-tuslari button {
+  width: 50px;
+  height: 50px;
+  background-color: white;
+  border: none;
+  color: black;
+  font-size: 16px;
+  cursor: pointer;
+}
