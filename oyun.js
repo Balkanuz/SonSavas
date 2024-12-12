@@ -113,5 +113,6 @@ document.getElementById('sol').addEventListener('click', () => gemi1X -= 5);
 document.getElementById('sag').addEventListener('click', () => gemi1X += 5);
 document.getElementById('yukari').addEventListener('click', () => gemi1Y -= 5);
 document.getElementById('asagi').addEventListener('click', () => gemi1Y += 5);
+document.getElementById('at').addEventListener('click', () => lazerAt(gemi1, -5)); // Lazer atış butonu
 
 hareket();
