@@ -24,6 +24,14 @@ function oyunBitir(mesaj) {
   window.location.reload(); // Sayfayı yeniden yükleyerek oyunu yeniden başlat
 }
 
+function gemiPatlat() {
+  gemi2.style.backgroundImage = 'url("patlama.png")'; // Patlama görseli
+  setTimeout(() => {
+    gemi2.remove(); // Gemiyi ekrandan kaldır
+    oyunBitir('Tebrikler! Oyunu kazandınız!');
+  }, 500); // 500 ms sonra gemiyi kaldır ve oyunu bitir
+}
+
 function lazerAt(gemi, yon) {
   const lazer = document.createElement('div');
   lazer.className = 'lazer';
@@ -48,7 +56,7 @@ function lazerAt(gemi, yon) {
       skor1El.textContent = skor1;
       lazer.remove();
       if (skor1 >= 5) {
-        oyunBitir('Tebrikler! Oyunu kazandınız!');
+        gemiPatlat(); // Gemi patlasın
       }
     }
 
