@@ -31,28 +31,47 @@ function lazerAt(gemi, yon) {
   lazer.style.top = `${parseInt(gemi.style.top) - 10}px`;
   oyun.appendChild(lazer);
 
+  let vurdu = false;
+
   function hareket() {
     lazer.style.top = `${parseInt(lazer.style.top) + yon}px`;
 
     if (parseInt(lazer.style.top) < 0 || parseInt(lazer.style.top) > 600) {
       lazer.remove();
-      canlar -= 1;
-      canlarEl.children[canlar].classList.add('kapali'); // Kalp söndürme
-      if (canlar === 0) oyunBitir('Kaybettiniz. Canınız bitti.');
-    } else {
-      requestAnimationFrame(hareket);
+      return;
     }
 
     if (yon < 0 && parseInt(lazer.style.left) > gemi2X && parseInt(lazer.style.left) < gemi2X + 40 &&
         parseInt(lazer.style.top) > gemi2Y && parseInt(lazer.style.top) < gemi2Y + 40) {
+      vurdu = true;
       skor1 += 1;
       skor1El.textContent = skor1;
       lazer.remove();
-      if (skor1 >= 20) oyunBitir('Tebrikler! Oyunu kazandınız!');
+      if (skor1 >= 5) {
+        oyunBitir('Tebrikler! Oyunu kazandınız!');
+      }
+    }
+
+    if (!vurdu) {
+      requestAnimationFrame(hareket);
+    } else {
+      lazer.remove();
     }
   }
 
   requestAnimationFrame(hareket);
+
+  setTimeout(() => {
+    if (!vurdu) {
+      canlar -= 1;
+      if (canlar >= 0) {
+        canlarEl.children[canlar].classList.add('kapali'); // Kalp söndürme
+      }
+      if (canlar === 0) {
+        oyunBitir('Kaybettiniz. Canınız bitti.');
+      }
+    }
+  }, 200); // Lazer hareketi bittiğinde kalp kontrolü
 }
 
 function hareket() {
@@ -89,5 +108,10 @@ document.addEventListener('keydown', (e) => {
       break;
   }
 });
+
+document.getElementById('sol').addEventListener('click', () => gemi1X -= 5);
+document.getElementById('sag').addEventListener('click', () => gemi1X += 5);
+document.getElementById('yukari').addEventListener('click', () => gemi1Y -= 5);
+document.getElementById('asagi').addEventListener('click', () => gemi1Y += 5);
 
 hareket();
