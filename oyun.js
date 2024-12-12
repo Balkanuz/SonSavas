@@ -1,5 +1,8 @@
 // oyun.js
 const oyun = document.getElementById('oyun');
+const acilisEkrani = document.getElementById('acilis-ekrani');
+const oyunBasligi = document.getElementById('oyun-basligi');
+
 const gemi1 = document.createElement('div');
 gemi1.className = 'gemi1';
 oyun.appendChild(gemi1);
@@ -123,4 +126,10 @@ document.getElementById('yukari').addEventListener('click', () => gemi1Y -= 5);
 document.getElementById('asagi').addEventListener('click', () => gemi1Y += 5);
 document.getElementById('at').addEventListener('click', () => lazerAt(gemi1, -5)); // Lazer atış butonu
 
-hareket();
+// Açılış ekranını belirli bir süre sonra kapat ve oyunu başlat
+setTimeout(() => {
+  acilisEkrani.style.display = 'none';
+  oyun.style.display = 'block';
+  oyunBasligi.style.display = 'block';
+  hareket(); // Oyunu başlat
+}, 3000); // 3 saniye sonra açılış ekranını kapat
